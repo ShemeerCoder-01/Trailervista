@@ -3,14 +3,16 @@
 }
 
 .row h1{
+    font-size: 1.75rem;
+    font-weight: 500;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-right: 75%;
+    margin-right: 77%;
 }
 
 .posters{
     display: flex;
-    padding: 20px;
+    padding: 10px;
     overflow-x: scroll;
     overflow-y:hidden ;
 }
@@ -37,7 +39,8 @@
 
 @media screen and (max-width:990px) {
     .row h1{
-        font-size: 1.2rem;
+        font-size: 1.25rem;
+        font-weight: 500;
         margin-top: 10px;
         margin-bottom: 10px;
         margin-right: 75%;
@@ -57,7 +60,7 @@
 
 @media screen and (max-width:600px) {
     .row h1{
-        font-size: 0.80rem;
+        font-size: 1rem;
         margin-top: 10px;
         margin-bottom: 10px;
         margin-right: 75%;

@@ -1,3 +1,5 @@
+A simple and basic Netflix App Homepage ui created using react and tmdb free api's...
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -31,3 +31,29 @@
     }
     
 }
+
+@media screen and (max-width:760px) {
+    .navBar .logo{
+        width: 4rem;
+        padding-left: 1rem;
+    }
+    
+    .navBar .avatar{
+        width: 1rem;
+        padding-right: 1rem;
+    }
+    
+}
+
+@media screen and (max-width:480px) {
+    .navBar .logo{
+        width: 2.8rem;
+        padding-left: 1rem;
+    }
+    
+    .navBar .avatar{
+        width: 1rem;
+        padding-right: 1rem;
+    }
+    
+}
