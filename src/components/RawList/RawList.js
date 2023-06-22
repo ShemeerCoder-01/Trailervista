@@ -19,11 +19,9 @@ function RawList(props) {
   let [movies, setMovies] = useState();
   let [videoKey,SetVideoKey] = useState();
   let [clicked,setClicked] = useState(false);
-  console.log("videoKey ",videoKey);
-  console.log(props.type);
+  
   useEffect(() => {
     Axios.get(props.type).then((response) => {
-      console.log("from raw list", response.data.results)
       setMovies(response.data.results);
     }).catch(err=> console.log(err));
   },[props.type,clicked])
@@ -47,7 +45,6 @@ function RawList(props) {
     height: '340',
     width: '100%',
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };

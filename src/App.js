@@ -14,13 +14,12 @@ import { documentaries } from './components/constants/constants';
 
 
 function App() {
-
+  
   
   return (
     <div className="App">
       <Navbar/>
       <Banner/>
-      {console.log(trending)}
       <RawList type={originals} title ="Netflix Originals"/>
       <RawList type={trending} title="Trending" isSmall/>
       <RawList type={action} title ="Action Movies" isSmall/>
