@@ -1,4 +1,5 @@
 A simple and basic Netflix App Homepage ui created using react and tmdb free api's...
+Deploment - https://main--stirring-cranachan-1a779f.netlify.app/
 
 # Getting Started with Create React App
 
