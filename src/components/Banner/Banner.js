@@ -9,7 +9,7 @@ function Banner() {
     let [movieUrl, setMovieUrl] = useState();
     let [movie, setMovie] = useState();
 
-    // console.log("movie details",movie.name);
+    console.log("movie details",process.env.REACT_APP_API_KEY);
 
     useEffect(() => {
         Axios.get(`discover/tv?api_key=${process.env.REACT_APP_API_KEY}&with_networks=213`).then((response) => {
@@ -17,7 +17,7 @@ function Banner() {
             setMovieUrl(response.data.results[idx].backdrop_path);
             setMovie(response.data.results[idx]);
             console.log(response.data.results);
-        })
+        }).catch(err=> console.log(err));
 
     }, [])
 

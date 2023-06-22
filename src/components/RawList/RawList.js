@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Axios from '../Axios/Axios';
 import { baseimageUrl } from '../constants/constants';
 import './RawList.css';
-import { api_key } from '../constants/constants';
 import YouTube from 'react-youtube';
 
 function keyGenerator(){
@@ -21,22 +20,22 @@ function RawList(props) {
   let [videoKey,SetVideoKey] = useState();
   let [clicked,setClicked] = useState(false);
   console.log("videoKey ",videoKey);
-
+  console.log(props.type);
   useEffect(() => {
     Axios.get(props.type).then((response) => {
       console.log("from raw list", response.data.results)
       setMovies(response.data.results);
-    })
+    }).catch(err=> console.log(err));
   },[props.type,clicked])
 
   const handleClick = (id,isSmall)=>{
     
     if(isSmall){
-      Axios.get(`/movie/${id}/videos?api_key=${api_key}`).then((response)=>{
+      Axios.get(`/movie/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`).then((response)=>{
         SetVideoKey(response.data.results[0].key);        
       }).catch(err=> console.log(err));
     }else{
-      Axios.get(`/tv/${id}/videos?api_key=${api_key}`).then((response)=>{
+      Axios.get(`/tv/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`).then((response)=>{
         SetVideoKey(response.data.results[0].key);
       }).catch(err=> console.log(err));
     }
