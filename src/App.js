@@ -1,32 +1,36 @@
 import './App.css';
-import Navbar from './components/NavBar/Navbar';
-import Banner from './components/Banner/Banner';
-import RawList from './components/RawList/RawList';
-import { originals } from './components/constants/constants';
-import { action } from './components/constants/constants';
-import { horror } from './components/constants/constants';
-import { comedy } from './components/constants/constants';
-import { trending } from './components/constants/constants';
-import { romantic } from './components/constants/constants';
-import { documentaries } from './components/constants/constants';
-
-
+import SignupPage from './components/SignUpPage';
+import { useEffect } from 'react';
+import { Routes,Route } from 'react-router-dom';
+import { isSignedIn } from './actions/signInChecker';
+// import { auth } from './firebase';
+import HomePage from './components/Pages/HomePage';
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
-  
-  
+
+  // const [user, setUser] = useState('');
+ const navigate = useNavigate();
+
+
+  useEffect(() => {
+    // Add an observer to watch for changes in the user's authentication state
+    const user = isSignedIn();
+    if (user) {
+      navigate('/Home');
+    } else {
+      navigate('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="App">
-      <Navbar/>
-      <Banner/>
-      <RawList type={originals} title ="Netflix Originals"/>
-      <RawList type={trending} title="Trending" isSmall/>
-      <RawList type={action} title ="Action Movies" isSmall/>
-      <RawList type={horror} title ="Horror Movies" isSmall/>
-      <RawList type={comedy} title ="Comedy Movies" isSmall/>
-      <RawList type={romantic} title="Romantic Movies" isSmall/>
-      <RawList type={documentaries} title="Documentaries" isSmall/>
+      <Routes>
+        <Route path='/' index element={<SignupPage/>}/>
+        <Route path='/Home' element={<HomePage/>}/>
+      </Routes>
     </div>
   );
 }
