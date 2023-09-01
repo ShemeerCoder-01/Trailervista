@@ -3,7 +3,7 @@ import Axios from '../../Axios/Axios';
 import { baseimageUrl } from '../constants/constants';
 import './RawList.css';
 import YouTube from 'react-youtube';
-import LoaderComponent from '../Common';
+import LoaderComponent from '../Common/Loader';
 
 function keyGenerator(){
   let res = '';

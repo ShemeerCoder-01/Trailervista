@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import Navbar from '../NavBar/Navbar';
-import Banner from '../Banner/Banner';
-import RawList from '../RawList/RawList';
-import { originals } from '../constants/constants';
-import { action } from '../constants/constants';
-import { horror } from '../constants/constants';
-import { comedy } from '../constants/constants';
-import { trending } from '../constants/constants';
-import { romantic } from '../constants/constants';
-import { documentaries } from '../constants/constants';
+import Navbar from '../components/Common/NavBar/Navbar';
+import Banner from '../components/Banner/Banner';
+import RawList from '../components/RawList/RawList';
+import { originals } from '../components/constants/constants';
+import { action } from '../components/constants/constants';
+import { horror } from '../components/constants/constants';
+import { comedy } from '../components/constants/constants';
+import { trending } from '../components/constants/constants';
+import { romantic } from '../components/constants/constants';
+import { documentaries } from '../components/constants/constants';
 
 function HomePage() {
 

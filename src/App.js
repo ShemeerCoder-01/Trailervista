@@ -4,13 +4,12 @@ import { useEffect } from 'react';
 import { Routes,Route } from 'react-router-dom';
 import { isSignedIn } from './actions/signInChecker';
 // import { auth } from './firebase';
-import HomePage from './components/Pages/HomePage';
+import HomePage from './Pages/HomePage';
 import { useNavigate } from 'react-router-dom';
 
 
 function App() {
 
-  // const [user, setUser] = useState('');
  const navigate = useNavigate();
 
 
