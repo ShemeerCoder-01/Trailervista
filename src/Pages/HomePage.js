@@ -19,11 +19,9 @@ function HomePage() {
     useEffect(() => {
       // Add an observer to watch for changes in the user's authentication state
       const user = isSignedIn();
-      if (user) {
-        navigate('/Home');
-      } else {
+      if (!user) {
         navigate('/');
-      }
+      } 
     }, [navigate]);
 
   return (
