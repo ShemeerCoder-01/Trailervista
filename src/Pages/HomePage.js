@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Common/NavBar/Navbar';
 import Banner from '../components/Banner/Banner';
 import RawList from '../components/RawList/RawList';
@@ -9,10 +9,23 @@ import { comedy } from '../components/constants/constants';
 import { trending } from '../components/constants/constants';
 import { romantic } from '../components/constants/constants';
 import { documentaries } from '../components/constants/constants';
+import { useNavigate } from 'react-router-dom';
+import { isSignedIn } from '../actions/signInChecker';
 
 function HomePage() {
 
     const [videoType, setVideoType] = useState("");
+    const navigate = useNavigate();
+    useEffect(() => {
+      // Add an observer to watch for changes in the user's authentication state
+      const user = isSignedIn();
+      if (user) {
+        navigate('/Home');
+      } else {
+        navigate('/');
+      }
+    }, [navigate]);
+
   return (
     <div>
             <Navbar />
