@@ -22,10 +22,6 @@ function RawList(props) {
   let [clicked,setClicked] = useState(false);
   let [currMovieId,setCurrentMovieId] = useState();
 
-  // if(props.title === 'Documentaries'){
-  //   console.log('I am from the block');
-  //   props.setIsFetchedAll(true);
-  // }
   
   useEffect(() => {
     Axios.get(props.type).then((response) => {
