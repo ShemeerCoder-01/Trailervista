@@ -6,8 +6,8 @@ import {getAuth,GoogleAuthProvider} from "firebase/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDraUoFw4ETsW7KlvnPWnE5U_m5VjrOA3Q",
-  authDomain: "movie-app-clone-52e8a.firebaseapp.com",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   projectId: "movie-app-clone-52e8a",
   storageBucket: "movie-app-clone-52e8a.appspot.com",
   messagingSenderId: "312913031116",
