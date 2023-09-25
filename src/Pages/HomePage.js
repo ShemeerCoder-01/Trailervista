@@ -10,15 +10,14 @@ import { trending } from '../components/constants/constants';
 import { romantic } from '../components/constants/constants';
 import { documentaries } from '../components/constants/constants';
 import { useNavigate } from 'react-router-dom';
-import { isSignedIn } from '../actions/signInChecker';
+
 
 function HomePage() {
 
     const [videoType, setVideoType] = useState("");
     const navigate = useNavigate();
     useEffect(() => {
-      // Add an observer to watch for changes in the user's authentication state
-      const user = isSignedIn();
+      const user = sessionStorage.getItem('user');
       if (!user) {
         navigate('/');
       } 
