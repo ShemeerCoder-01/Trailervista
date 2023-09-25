@@ -8,10 +8,14 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuList from '@mui/material/MenuList';
 import { ListItemIcon, ListItemText } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import {auth} from '../../../firebase';
+
 
 function UserDropDown({anchorEl,setAnchorEl}) {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -23,6 +27,21 @@ function UserDropDown({anchorEl,setAnchorEl}) {
     }
     setOpen(false);
   };
+  const handleLogout = async()=>{
+    try{
+      await auth.signOut();
+      sessionStorage.removeItem('user');
+      navigate('/');
+    }catch(e){
+      console.log("Error is :",e);
+    }
+    setOpen(false);
+  }
+
+  const handleClick = ()=>{
+    navigate('/profile');
+    setOpen(false);
+  }
 
   function handleListKeyDown(event) {
     if (event.key === 'Tab') {
@@ -79,13 +98,13 @@ function UserDropDown({anchorEl,setAnchorEl}) {
                     aria-labelledby="composition-div"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>
+                    <MenuItem onClick={handleClick}>
                       <ListItemIcon>
                        <AccountCircleRounded />
                         </ListItemIcon>
                       <ListItemText primary="Profile" />
                     </MenuItem>
-                    <MenuItem onClick={handleClose}>
+                    <MenuItem onClick={handleLogout}>
                       <ListItemIcon>
                         <LogoutRoundedIcon/>
                       </ListItemIcon>

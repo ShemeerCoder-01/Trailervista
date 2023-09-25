@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -8,10 +14,6 @@ body{
   color: white;
 }
 
-*{
-  margin: 0;
-  border: 0;
-}
 .container{
   background-image: url('../src/assets/netflix-SignUp-image.jpg');
   background-position: center;
@@ -90,3 +92,23 @@ input::placeholder{
   opacity: 0.9;
 }
 
+.personalInfo{
+  /* style={{display:'flex', gap:'10px',padding:"12px",margin:"3rem 1rem"}} */
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  margin: 3rem 1rem;
+}
+
+.personalInfo .left{
+  border:  3px solid red;
+  padding: 3rem 0;
+  padding-right: 5rem;
+}
+
+.welcomeMsg{
+  margin-top: 3rem;
+  width: fit-content;
+  padding: 1rem 1.5rem;
+}

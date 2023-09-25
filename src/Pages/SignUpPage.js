@@ -17,7 +17,7 @@ function SignUpPage() {
     const handleClick = async () => {
         try {
             const response = await signInWithPopup(auth, provider);
-            sessionStorage.setItem('user', response.user.uid);
+            sessionStorage.setItem('user', response.user.email);
             navigate('/Home');
         } catch (error) {
             navigate('/');
@@ -29,7 +29,7 @@ function SignUpPage() {
         e.preventDefault();
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password);
-            sessionStorage.setItem('user', response.user.uid);
+            sessionStorage.setItem('user', response.user.email);
             navigate('/Home');
         } catch (e) {
             console.log(e);
