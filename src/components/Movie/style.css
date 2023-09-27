@@ -1,0 +1,44 @@
+.poster{
+    cursor: pointer;
+    max-height: 250px;
+    margin-right: 10px;
+    transition: transform 0.2s ease-in-out;
+    transform-origin: center;
+}
+
+.smallposter{
+    max-height: 150px;
+    margin-right: 10px;
+}
+
+.poster:hover{
+    transform: scale(1.1);
+    position: relative;
+    z-index: 1;
+}
+
+.movie{
+    position: relative;
+}
+
+.favIcon{
+    position: absolute; 
+    top: 8px;
+    right: 16px;
+    z-index: 1;
+}
+
+@media screen and (max-width:990px) {
+
+    .poster{
+        cursor: pointer;
+        max-height: 150px;
+        margin-right: 10px;
+    }
+    
+    .smallposter{
+        max-height: 80px;
+        margin-right: 10px;
+    }
+}
+
