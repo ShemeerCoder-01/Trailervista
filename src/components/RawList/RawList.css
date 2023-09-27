@@ -25,6 +25,8 @@
     cursor: pointer;
     max-height: 250px;
     margin-right: 10px;
+    transition: transform 0.2s ease-in-out;
+    transform-origin: center;
 }
 
 .smallposter{
@@ -34,6 +36,19 @@
 
 .poster:hover{
     transform: scale(1.1);
+    position: relative;
+    z-index: 1;
+}
+
+.movie{
+    position: relative;
+}
+
+.favIcon{
+    position: absolute; 
+    top: 8px;
+    right: 16px;
+    z-index: 1;
 }
 
 

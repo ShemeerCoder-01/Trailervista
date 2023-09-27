@@ -4,6 +4,7 @@ import { baseimageUrl } from '../constants/constants';
 import './RawList.css';
 import YouTube from 'react-youtube';
 import LoaderComponent from '../Common/Loader';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 
 function keyGenerator(){
   let res = '';
@@ -26,6 +27,7 @@ function RawList(props) {
   useEffect(() => {
     Axios.get(props.type).then((response) => {
       setMovies(response.data.results);
+      console.log(response.data.results);
     }).catch(err=> console.log(err));
   },[props.type,clicked]);
 
@@ -79,8 +81,11 @@ function RawList(props) {
       <h1>{props.title}</h1>
       <div key={keyGenerator()} className='posters'>
         {movies && movies.map((movie, index) =>
-          <img onClick={()=>{
-            handleClick(movie.id,props.isSmall)}} key={keyGenerator()} className={props.isSmall?'smallposter':'poster'} src={baseimageUrl + movie.backdrop_path} alt={movie.name} />
+          <div className='movie'>
+            <img onClick={()=>{
+              handleClick(movie.id,props.isSmall)}} key={keyGenerator()} className={props.isSmall?'smallposter':'poster'} src={baseimageUrl + movie.backdrop_path} alt={movie.name} />
+            <FavoriteBorderRoundedIcon style={{fontSize:"2rem"}} className='favIcon' onClick={()=> console.log("hi")}/>
+          </div>
         )}
 
       </div>
