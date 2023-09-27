@@ -90,10 +90,9 @@ function UserDropDown({anchorEl,setAnchorEl}) {
                   placement === 'bottom-start' ? 'left top' : 'left bottom',
               }}
             >
-              <Paper style={{margin:"5px 14px"}}>
+              <Paper style={{margin:"5px 14px",padding:"2px 10px"}}>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
-                    autoFocusItem={open}
                     id="composition-menu"
                     aria-labelledby="composition-div"
                     onKeyDown={handleListKeyDown}

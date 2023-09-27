@@ -5,7 +5,7 @@ import { baseimageUrl } from '../constants/constants';
 import './style.css';
 
 
-function Movie({movie,title,setClicked,SetVideoKey,videoType,setVideoType,isSmall,handleClick}) {
+function Movie({movie,isSmall,handleClick}) {
     let [iconClicked,setIconClicked] = useState(false);
 
    
