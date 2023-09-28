@@ -30,7 +30,7 @@ function UserDropDown({anchorEl,setAnchorEl}) {
   const handleLogout = async()=>{
     try{
       await auth.signOut();
-      sessionStorage.removeItem('user');
+      localStorage.removeItem('user');
       navigate('/');
     }catch(e){
       console.log("Error is :",e);

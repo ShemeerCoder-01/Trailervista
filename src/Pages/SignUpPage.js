@@ -14,10 +14,12 @@ function SignUpPage() {
 
     const navigate = useNavigate();
 
+    
+
     const handleClick = async () => {
         try {
             const response = await signInWithPopup(auth, provider);
-            sessionStorage.setItem('user', response.user.email);
+            localStorage.setItem('user', response.user.email);
             navigate('/Home');
         } catch (error) {
             navigate('/');

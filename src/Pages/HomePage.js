@@ -16,8 +16,9 @@ function HomePage() {
 
     const [videoType, setVideoType] = useState("");
     const navigate = useNavigate();
+
     useEffect(() => {
-      const user = sessionStorage.getItem('user');
+      const user = localStorage.getItem('user');
       if (!user) {
         navigate('/');
       } 
