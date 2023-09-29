@@ -1,7 +1,7 @@
 
 export const isSignedIn = ()=>{
-    const uid = sessionStorage.getItem('user');
-    if(uid){
+    const user = localStorage.getItem('user');
+    if(user){
         return true;
     }
     else{

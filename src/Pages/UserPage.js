@@ -2,20 +2,22 @@ import React, { useContext, useEffect, useState } from 'react'
 import NavBar from '../components/Common/NavBar/Navbar'
 import { useNavigate } from 'react-router-dom';
 import { movieContext } from '../MovieContext';
+import { getFavoriteMovies } from '../actions/FavoriteList';
+import { isSignedIn } from '../actions/signInChecker';
 
 
 function UserPage() {
     const [user,setUser] = useState('');
-    // const [movies,setMovies] = useState();
+    const [movies,setMovies] = useState([]);
     const navigate = useNavigate();
     let {moviesData} = useContext(movieContext);
     
     console.log("useContext data",moviesData);
 
     useEffect(()=>{
-        const userEmail = localStorage.getItem('user');
-        if(userEmail){
-            setUser(userEmail);
+        const userStatus = isSignedIn();
+        if(userStatus){
+            const userEmail = localStorage.getItem('user');
             let [name] = userEmail.split('@');
             setUser(name);  
         }
@@ -25,33 +27,11 @@ function UserPage() {
     },[user,navigate]);
 
     useEffect(()=>{
-    //    getFavoriteMovies();
+       getFavoriteMovies(setMovies,moviesData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-    // const getFavoriteMovies = ()=>{
-    //     const favoriteList = JSON.parse(localStorage.getItem('favorites'));
-    //     let arr = [];
-        
-
-    //     for(let i = 0; i < moviesData.length; i++){
-    //         let favorites = moviesData[i].filter(movie=> favoriteList?.includes(movie.id));
-    //         if(favorites){
-    //             for(let j = 0; j < favorites.length; j++){
-    //                 if(arr.length !== 0 && !arr.includes(favorites[j])){
-    //                     arr.push(favorites[j]);
-    //                 }
-    //                 else{
-    //                     arr.push(favorites[j]);
-    //                 }
-    //             }
-
-    //         }
-    //     }
-    //     setMovies(arr);
-    // }
-
-    // console.log(movies);
+    console.log(movies);
 
   return (
     <div>

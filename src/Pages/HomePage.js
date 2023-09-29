@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../components/Common/NavBar/Navbar';
 import Banner from '../components/Banner/Banner';
 import RawList from '../components/RawList/RawList';
@@ -11,6 +11,7 @@ import { romantic } from '../components/constants/constants';
 import { documentaries } from '../components/constants/constants';
 import { useNavigate } from 'react-router-dom';
 import { MovieFetching } from '../actions/MovieFetching';
+import { movieContext } from '../MovieContext';
 
 
 
@@ -26,11 +27,14 @@ function HomePage() {
     const [DocumentaryMovies,setDocumentaryMovies] = useState();
     const navigate = useNavigate();
 
+    const {setMoviesData} = useContext(movieContext);
+
     
     useEffect(()=>{
       let genre = [originals,trending,action,horror,comedy,romantic,documentaries];
       let states = [setOriginalMovies,setTrendingMovies,setActionMovies,setHorrorMovies,setComedyMovies,setRomanticMovies,setDocumentaryMovies];
-      MovieFetching(genre,states);
+      MovieFetching(genre,states,setMoviesData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(() => {
