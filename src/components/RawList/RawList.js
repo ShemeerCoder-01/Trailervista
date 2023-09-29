@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import Axios from '../../Axios/Axios';
 import './RawList.css';
 import YouTube from 'react-youtube';
 import LoaderComponent from '../Common/Loader';
 import Movie from '../Movie';
-import { movieContext } from '../../MovieContext';
+// import { movieContext } from '../../MovieContext';
 
 function keyGenerator(){
   let res = '';
@@ -22,20 +22,12 @@ function RawList(props) {
   let [videoKey,SetVideoKey] = useState();
   let [clicked,setClicked] = useState(false);
   let [currMovieId,setCurrentMovieId] = useState();
-  let {setMoviesData} = useContext(movieContext);
-
-  function fetchMovies(){
-    Axios.get(props.type).then((response) => {
-      setMovies(response.data.results);
-      setMoviesData(prevState=> [...prevState,response.data.results]);
-    }).catch(err=> console.log(err));
-  }
 
   
   useEffect(() => {
-    fetchMovies();
+    setMovies(props.movie);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[props.type]);
+  },[props.movie]);
 
   useEffect(() => {
     if(props.videoType === props.title){
@@ -44,7 +36,6 @@ function RawList(props) {
     else{
       setClicked(false);
     }
-  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.videoType])
   

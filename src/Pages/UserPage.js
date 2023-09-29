@@ -6,7 +6,7 @@ import { movieContext } from '../MovieContext';
 
 function UserPage() {
     const [user,setUser] = useState('');
-    const [movies,setMovies] = useState([]);
+    // const [movies,setMovies] = useState();
     const navigate = useNavigate();
     let {moviesData} = useContext(movieContext);
     
@@ -17,8 +17,7 @@ function UserPage() {
         if(userEmail){
             setUser(userEmail);
             let [name] = userEmail.split('@');
-            setUser(name);
-           
+            setUser(name);  
         }
         else{
             navigate('/');
@@ -26,15 +25,33 @@ function UserPage() {
     },[user,navigate]);
 
     useEffect(()=>{
-        const favoriteList = JSON.parse(localStorage.getItem('favorites'));
-        for(let i = 0; i < moviesData.length; i++){
-            let favorites = moviesData[i].filter(movie=> favoriteList.includes(movie.id));
-            setMovies(prevState=> [...prevState,favorites]);
-        }
+    //    getFavoriteMovies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-    console.log(movies);
+    // const getFavoriteMovies = ()=>{
+    //     const favoriteList = JSON.parse(localStorage.getItem('favorites'));
+    //     let arr = [];
+        
+
+    //     for(let i = 0; i < moviesData.length; i++){
+    //         let favorites = moviesData[i].filter(movie=> favoriteList?.includes(movie.id));
+    //         if(favorites){
+    //             for(let j = 0; j < favorites.length; j++){
+    //                 if(arr.length !== 0 && !arr.includes(favorites[j])){
+    //                     arr.push(favorites[j]);
+    //                 }
+    //                 else{
+    //                     arr.push(favorites[j]);
+    //                 }
+    //             }
+
+    //         }
+    //     }
+    //     setMovies(arr);
+    // }
+
+    // console.log(movies);
 
   return (
     <div>

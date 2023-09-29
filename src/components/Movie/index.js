@@ -10,7 +10,7 @@ function Movie({movie,isSmall,handleClick}) {
 
     useEffect(()=>{
       let favoritesData = JSON.parse(localStorage.getItem('favorites'));
-      if(favoritesData.includes(movie.id)){
+      if(favoritesData?.includes(movie.id)){
         setIconClicked(true);
       }
     },[movie.id]);

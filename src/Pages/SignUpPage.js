@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { auth, provider } from '../firebase'
 import { signInWithPopup } from 'firebase/auth'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
@@ -14,6 +14,13 @@ function SignUpPage() {
 
     const navigate = useNavigate();
 
+     useEffect(()=>{
+    let user = localStorage.getItem('user');
+    if(user){
+      navigate('/Home');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
     
 
     const handleClick = async () => {
