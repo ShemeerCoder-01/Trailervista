@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import GoogleIcon from '@mui/icons-material/Google';
 import { TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { isSignedIn } from '../actions/signInChecker';
 
 
 function SignUpPage() {
@@ -15,7 +16,7 @@ function SignUpPage() {
     const navigate = useNavigate();
 
      useEffect(()=>{
-    let user = localStorage.getItem('user');
+    const user = isSignedIn();
     if(user){
       navigate('/Home');
     }

@@ -12,6 +12,7 @@ import { documentaries } from '../components/constants/constants';
 import { useNavigate } from 'react-router-dom';
 import { MovieFetching } from '../actions/MovieFetching';
 import { movieContext } from '../MovieContext';
+import { isSignedIn } from '../actions/signInChecker';
 
 
 
@@ -38,7 +39,7 @@ function HomePage() {
     },[])
 
     useEffect(() => {
-      const user = localStorage.getItem('user');
+      const user = isSignedIn();
       if (!user) {
         navigate('/');
       } 
