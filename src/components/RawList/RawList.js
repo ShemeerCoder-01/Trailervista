@@ -4,7 +4,6 @@ import './RawList.css';
 import YouTube from 'react-youtube';
 import LoaderComponent from '../Common/Loader';
 import Movie from '../Movie';
-// import { movieContext } from '../../MovieContext';
 
 function keyGenerator(){
   let res = '';

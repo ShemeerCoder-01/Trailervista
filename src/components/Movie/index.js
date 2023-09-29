@@ -20,6 +20,7 @@ function Movie({movie,isSmall,handleClick}) {
         let userFavorites = JSON.parse(localStorage.getItem('favorites'));
         let idx = userFavorites.find(movie=> movie.id === id);
         userFavorites.splice(idx,1);
+        localStorage.setItem('favorites',JSON.stringify(userFavorites));
       }
       else{
         let userFavorites = JSON.parse(localStorage.getItem('favorites'));
