@@ -8,12 +8,17 @@ import './style.css';
 function Movie({movie,isSmall,handleClick}) {
     let [iconClicked,setIconClicked] = useState(false);
 
+
     useEffect(()=>{
       let favoritesData = JSON.parse(localStorage.getItem('favorites'));
       if(favoritesData?.includes(movie.id)){
         setIconClicked(true);
       }
     },[movie.id]);
+
+    if(movie.backdrop_path === null){
+      return;
+    }
 
     const handleIconClick = (id)=>{
       if(iconClicked){

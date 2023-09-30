@@ -1,18 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../components/Common/NavBar/Navbar'
 import { useNavigate } from 'react-router-dom';
-import { movieContext } from '../MovieContext';
 import { getFavoriteMovies } from '../actions/FavoriteList';
 import { isSignedIn } from '../actions/signInChecker';
-
+import { keyGenerator } from '../actions/KeyGenerator';
+import Movie from '../components/Movie';
+import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 
 function UserPage() {
     const [user,setUser] = useState('');
     const [movies,setMovies] = useState([]);
     const navigate = useNavigate();
-    let {moviesData} = useContext(movieContext);
+  
     
-    console.log("useContext data",moviesData);
+
+    
 
     useEffect(()=>{
         const userStatus = isSignedIn();
@@ -27,7 +29,7 @@ function UserPage() {
     },[user,navigate]);
 
     useEffect(()=>{
-       getFavoriteMovies(setMovies,moviesData);
+       getFavoriteMovies(setMovies);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -37,9 +39,26 @@ function UserPage() {
     <div>
         <NavBar/>
         <h1 className='welcomeMsg'>Hi..{user}</h1>
-        <h1>Favorites</h1>
+        <h1 style={{marginBottom:"2rem"}}>Favorites</h1>
         <div className='favoriteList'>
-            
+            {movies && movies.map((movie, index) =>
+            <div className='favoriteMovie' key={keyGenerator()}>
+                
+                <Movie
+                 movie={movie} 
+                 isSmall={true}/>
+                <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
+                    <h3>{movie.name || movie.original_title}</h3>
+                    <p>{movie.original_language}</p>
+                        {/* <p>{movie.overview}</p> */}
+                </div>
+                
+                <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
+                    <StarBorderRoundedIcon/>
+                    <p>{movie.vote_average}</p>
+                </div>
+            </div>
+            )}
         </div>
     </div>
   )

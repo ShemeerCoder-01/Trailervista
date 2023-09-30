@@ -1,10 +1,11 @@
-export const getFavoriteMovies = (setMovies,moviesData)=>{
+export const getFavoriteMovies = (setMovies)=>{
     const favoriteList = JSON.parse(localStorage.getItem('favorites'));
+    const movies = JSON.parse(localStorage.getItem('movies'));
     let arr = [];
     
 
-    for(let i = 0; i < moviesData.length; i++){
-        let favorites = moviesData[i].filter(movie=> favoriteList?.includes(movie.id));
+    for(let i = 0; i < movies?.length; i++){
+        let favorites = movies[i].filter(movie=> favoriteList?.includes(movie.id));
         console.log("favorites ",favorites);
         if(favorites){
             for(let j = 0; j < favorites.length; j++){

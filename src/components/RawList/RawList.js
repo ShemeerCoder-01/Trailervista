@@ -4,15 +4,7 @@ import './RawList.css';
 import YouTube from 'react-youtube';
 import LoaderComponent from '../Common/Loader';
 import Movie from '../Movie';
-
-function keyGenerator(){
-  let res = '';
-  let str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for(let i = 0; i < 16; i++){
-    res += str.charAt(Math.floor(Math.random()* str.length));
-  }
-  return res;
-}
+import { keyGenerator } from '../../actions/KeyGenerator';
 
 
 
@@ -75,7 +67,7 @@ function RawList(props) {
   return (
     <div key={keyGenerator()}  className='row'>
       <h1>{props.title}</h1>
-      <div key={keyGenerator()} className='posters'>
+      <div className='posters'>
         {movies && movies.map((movie, index) =>
           <Movie
            key={keyGenerator()}

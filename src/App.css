@@ -108,7 +108,21 @@ input::placeholder{
 }
 
 .welcomeMsg{
-  margin-top: 3rem;
+  margin: 3rem 0;
   width: fit-content;
   padding: 1rem 1.5rem;
+}
+
+.favoriteList{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.favoriteMovie{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1.25rem 1.5rem;
 }
