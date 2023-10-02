@@ -5,7 +5,7 @@ import { baseimageUrl } from '../constants/constants';
 import './style.css';
 
 
-function Movie({movie,isSmall,handleClick}) {
+function Movie({movie,isSmall,handleClick,favorite}) {
     let [iconClicked,setIconClicked] = useState(false);
 
 
@@ -47,10 +47,10 @@ function Movie({movie,isSmall,handleClick}) {
     <div className='movie'>
         <img onClick={()=>{
         handleClick(movie.id,isSmall)}} className={isSmall?'smallposter':'poster'} src={baseimageUrl + movie.backdrop_path} alt={movie.name} />
-        {iconClicked?
+        {favorite===undefined? iconClicked?
         <FavoriteIcon style={{fontSize:isSmall?"1.5rem":"2rem",color:"red"}} className='favIcon' onClick={()=>handleIconClick(movie.id)}/>:
         <FavoriteBorderRoundedIcon style={{fontSize:isSmall?"1.5rem":"2rem"}} className='favIcon' onClick={()=>handleIconClick(movie.id)}/>
-        }
+        :''}
    </div>
    
   )

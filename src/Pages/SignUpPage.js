@@ -39,7 +39,7 @@ function SignUpPage() {
         e.preventDefault();
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password);
-            sessionStorage.setItem('user', response.user.email);
+            localStorage.setItem('user', response.user.email);
             navigate('/Home');
         } catch (e) {
             console.log(e);

@@ -33,7 +33,7 @@ function UserPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-    console.log(movies);
+    
 
   return (
     <div>
@@ -46,11 +46,11 @@ function UserPage() {
                 
                 <Movie
                  movie={movie} 
-                 isSmall={true}/>
+                 isSmall={true}
+                 favorite={true}/>
                 <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
-                    <h3>{movie.name || movie.original_title}</h3>
-                    <p>{movie.original_language}</p>
-                        {/* <p>{movie.overview}</p> */}
+                    <h2>{movie.name || movie.original_title}</h2>
+                    <p style={{color:"rgba(255,255,255,0.38)"}}>{movie.original_language ==="en"?"English":movie.original_language==="KR"?"Korean":movie.original_language}</p>
                 </div>
                 
                 <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
