@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { auth, provider } from '../firebase'
-import { signInWithPopup } from 'firebase/auth'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import GoogleIcon from '@mui/icons-material/Google';
 import { TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { isSignedIn } from '../actions/signInChecker';
 
 
-function SignUpPage() {
+function LoginPage() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -38,19 +37,19 @@ function SignUpPage() {
     const handleForm = async (e) => {
         e.preventDefault();
         try {
-            const response = await createUserWithEmailAndPassword(auth, email, password);
+            const response = await signInWithEmailAndPassword(auth, email, password);
             localStorage.setItem('user', response.user.email);
             navigate('/Home');
         } catch (e) {
             console.log(e);
-            navigate('/');
+            navigate('/login');
         }
     }
 
     return (
         <div className='container' >
             <div className='signup'>
-                <h1>SignUp Page</h1>
+                <h1>LoginPage</h1>
                 <div style={{ marginTop: "2rem" }}>
                     <form onSubmit={handleForm}>
                         <TextField
@@ -111,8 +110,8 @@ function SignUpPage() {
                             onChange={e => setPassword(e.target.value)}
                             required
                         />
-                        <button className='auth-btn' type='submit'>SignUp</button>
-                        <p>Already signed up? <span onClick={()=> navigate('/login')} style={{paddingLeft:"5px",cursor:"pointer"}}>Login</span> </p>
+                        <button className='auth-btn' type='submit'>Login</button>
+                        <p>Not yet signed up? <span onClick={()=>navigate('/')} style={{paddingLeft:"5px",cursor:"pointer"}}>Sign up</span></p>
                     </form>
                 </div>
                 <div className="text-with-lines">
@@ -126,4 +125,4 @@ function SignUpPage() {
     )
 }
 
-export default SignUpPage;
+export default LoginPage;

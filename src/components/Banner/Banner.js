@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import './Banner.css';
 import Axios from '../../Axios/Axios';
 import { baseimageUrl } from '../constants/constants';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 function Banner() {
     let [movieUrl, setMovieUrl] = useState();
     let [movie, setMovie] = useState();
-    
+    const navigate = useNavigate();
 
     useEffect(() => {
         Axios.get(`discover/tv?api_key=${process.env.REACT_APP_API_KEY}&with_networks=213`).then((response) => {
@@ -28,7 +30,7 @@ function Banner() {
                     {movie && <h1 className='title'>{movie.name}</h1>}
                     <div className='banner_buttons' >
                         <button className='button' >Play</button>
-                        <button className='button' >My list</button>
+                        <button className='button' onClick={()=> navigate('/profile')} >My list</button>
                     </div>
                 </div>
             
