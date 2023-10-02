@@ -3,11 +3,12 @@ import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { baseimageUrl } from '../constants/constants';
 import './style.css';
-
+import { db } from '../../firebase';
+import { addDoc,collection } from 'firebase/firestore';
 
 function Movie({movie,isSmall,handleClick,favorite}) {
     let [iconClicked,setIconClicked] = useState(false);
-
+    const favoritesCollection = collection(db, 'favorites');
 
     useEffect(()=>{
       let favoritesData = JSON.parse(localStorage.getItem('favorites'));
@@ -20,7 +21,8 @@ function Movie({movie,isSmall,handleClick,favorite}) {
       return;
     }
 
-    const handleIconClick = (id)=>{
+    const handleIconClick = async(id)=>{
+      let arr = [];
       if(iconClicked){
         let userFavorites = JSON.parse(localStorage.getItem('favorites'));
         let idx = userFavorites.find(movie=> movie.id === id);
@@ -30,7 +32,7 @@ function Movie({movie,isSmall,handleClick,favorite}) {
       else{
         let userFavorites = JSON.parse(localStorage.getItem('favorites'));
         if(!userFavorites?.length > 0){
-          let arr = [];
+          // let arr = [];
           arr.push(id);
           localStorage.setItem('favorites',JSON.stringify(arr));
         }
@@ -39,7 +41,15 @@ function Movie({movie,isSmall,handleClick,favorite}) {
           localStorage.setItem('favorites',JSON.stringify(userFavorites));
         }
       }
+
       setIconClicked(prevState=> !prevState);
+
+      try{
+        const response = await addDoc(favoritesCollection,{Favoritelist:arr});
+        console.log("response is :",response);
+      }catch(e){
+        console.log("error is : ",e);
+      }
     }
 
    
