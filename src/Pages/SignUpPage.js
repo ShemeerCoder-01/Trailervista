@@ -14,7 +14,7 @@ function SignUpPage() {
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
-
+   
      useEffect(()=>{
     const user = isSignedIn();
     if(user){
@@ -22,6 +22,8 @@ function SignUpPage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
+
+    
     
 
     const handleClick = async () => {

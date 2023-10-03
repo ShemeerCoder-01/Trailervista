@@ -6,15 +6,18 @@ import { isSignedIn } from '../actions/signInChecker';
 import { keyGenerator } from '../actions/KeyGenerator';
 import Movie from '../components/Movie';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
+// import { getDocs,collection } from 'firebase/firestore';
+// import { db } from '../firebase';
 
 function UserPage() {
     const [user,setUser] = useState('');
     const [movies,setMovies] = useState([]);
     const navigate = useNavigate();
-  
-    
+
 
     
+
+    console.log(movies);
 
     useEffect(()=>{
         const userStatus = isSignedIn();
@@ -30,6 +33,21 @@ function UserPage() {
 
     useEffect(()=>{
        getFavoriteMovies(setMovies);
+    //    const userFavorites = async()=>{
+        // try{
+        //         const favorites =  collection(db,'favorites');
+        //         const data = await getDocs(favorites);
+        //         if(!data.empty){
+        //             const latest = data.docs[0];
+        //             const favorites = latest.data();
+        //             console.log("Favorites are", favorites['Favoritelist']);
+        //         }
+        //     }
+        //     catch(e){
+        //         console.log("error is",e);
+        //     }
+        // }
+       
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -55,7 +73,7 @@ function UserPage() {
                 
                 <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
                     <StarBorderRoundedIcon/>
-                    <p>{movie.vote_average}</p>
+                    <p>{Math.round(movie.vote_average * 10 ** 2)/10 ** 2}</p>
                 </div>
             </div>
             )}
