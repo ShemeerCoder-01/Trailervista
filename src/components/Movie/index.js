@@ -4,14 +4,14 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { baseimageUrl } from '../constants/constants';
 import './style.css';
 import { db } from '../../firebase';
-import { addDoc,collection } from 'firebase/firestore';
+import { addDoc,collection,getDocs } from 'firebase/firestore';
 
 function Movie({movie,isSmall,handleClick,favorite}) {
     let [iconClicked,setIconClicked] = useState(false);
-    const favoritesCollection = collection(db, 'favorites');
+    
 
     useEffect(()=>{
-      let favoritesData = JSON.parse(localStorage.getItem('favorites'));
+      let favoritesData = JSON.parse(localStorage.getItem('favorites'))?.map(movie=>movie.id);
       if(favoritesData?.includes(movie.id)){
         setIconClicked(true);
       }
@@ -22,23 +22,21 @@ function Movie({movie,isSmall,handleClick,favorite}) {
     }
 
     const handleIconClick = async(id)=>{
-      let arr = [];
       let userEmail = localStorage.getItem('user');
-      if(iconClicked){
-        let userFavorites = JSON.parse(localStorage.getItem('favorites'));
-        let idx = userFavorites.find(movie=> movie.id === id);
-        userFavorites.splice(idx,1);
-        localStorage.setItem('favorites',JSON.stringify(userFavorites));
-      }
-      else{
-        let userFavorites = JSON.parse(localStorage.getItem('favorites'));
-        if(!userFavorites?.length > 0){
-          let obj = {
-            id,
-            userEmail
+      try{
+        const favoritesData =  collection(db,'favorites');
+        const data = await getDocs(favoritesData);
+        const latest = data.docs[data.docs.length-1];
+        const favorites = latest.data();
+        let userFavorites = favorites['Favoritelist'];
+        if(iconClicked){
+          if(!data.empty){
+            let idx = userFavorites.find(movie=> movie.id === id);
+            userFavorites.splice(idx,1);
+            console.log("userobj removing : ",userFavorites);
+            const response = await addDoc(favoritesData,{Favoritelist:userFavorites});
+            console.log("response is :",response);
           }
-          arr.push(obj);
-          localStorage.setItem('favorites',JSON.stringify(arr));
         }
         else{
           let obj = {
@@ -46,19 +44,15 @@ function Movie({movie,isSmall,handleClick,favorite}) {
             userEmail
           }
           userFavorites.push(obj);
-          arr = userFavorites;
-          localStorage.setItem('favorites',JSON.stringify(userFavorites));
+          console.log("userobj adding : ",userFavorites);
+          const response = await addDoc(favoritesData,{Favoritelist:userFavorites});
+          console.log("response is :",response);
         }
-      }
-
-      setIconClicked(prevState=> !prevState);
-
-      try{
-        const response = await addDoc(favoritesCollection,{Favoritelist:arr});
-        console.log("response is :",response);
+       
       }catch(e){
         console.log("error is : ",e);
       }
+      setIconClicked(prevState=> !prevState);
     }
 
    

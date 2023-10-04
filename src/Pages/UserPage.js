@@ -6,8 +6,6 @@ import { isSignedIn } from '../actions/signInChecker';
 import { keyGenerator } from '../actions/KeyGenerator';
 import Movie from '../components/Movie';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
-// import { getDocs,collection } from 'firebase/firestore';
-// import { db } from '../firebase';
 
 function UserPage() {
     const [user,setUser] = useState('');

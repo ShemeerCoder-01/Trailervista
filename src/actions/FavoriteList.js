@@ -4,7 +4,7 @@ import { db } from '../firebase';
 export const getFavoriteMovies = async(setMovies)=>{
     const currentUser = localStorage.getItem('user');
     // const currentUser = auth.currentUser;
-    // console.log(currentUser);
+    console.log(currentUser);
     const movies = JSON.parse(localStorage.getItem('movies'));
     let arr = [];
     let favoriteList;
@@ -12,7 +12,7 @@ export const getFavoriteMovies = async(setMovies)=>{
         const favorites =  collection(db,'favorites');
         const data = await getDocs(favorites);
         if(!data.empty){
-            const latest = data.docs[0];
+            const latest = data.docs[data.docs.length-1];
             const favorites = latest.data();
             favoriteList = favorites['Favoritelist'];
             favoriteList = favoriteList.filter(movie=> movie.userEmail === currentUser).map(movie=> movie.id);
