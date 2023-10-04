@@ -31,6 +31,8 @@ function UserDropDown({anchorEl,setAnchorEl}) {
     try{
       await auth.signOut();
       localStorage.removeItem('user');
+      localStorage.removeItem('movies');
+      localStorage.removeItem('favorites');
       navigate('/');
     }catch(e){
       console.log("Error is :",e);
