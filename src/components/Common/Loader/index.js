@@ -5,7 +5,7 @@ import './style.css'
 function LoaderComponent() {
   return (
     <div className='loader'>
-        <CircularProgress />
+        <CircularProgress className='loader-icon' />
     </div>
   )
 }
