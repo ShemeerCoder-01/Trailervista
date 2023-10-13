@@ -1,8 +1,11 @@
 .row{
     margin: 0;
+    max-width: 100%; 
+    overflow: auto; 
+    scrollbar-width: none;
 }
 
-.row h1{
+.posters-container h1{
     font-size: 1.75rem;
     font-weight: 500;
     margin-top: 10px;
@@ -10,17 +13,26 @@
     margin-right: 77%;
 }
 
+
 .posters{
     display: flex;
+    gap: 7px;
     padding: 10px;
+    width: fit-content;
     overflow-x: scroll;
     overflow-y:hidden ;
+    scrollbar-width: none;
+}
+
+
+
+.row::-webkit-scrollbar{
+    display: none !important;
 }
 
 .posters::-webkit-scrollbar{
-    display: none;
+    display: none !important;
 }
-
 
 
 @media screen and (max-width:990px) {

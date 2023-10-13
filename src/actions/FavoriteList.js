@@ -6,7 +6,7 @@ export const getFavoriteMovies = async (setMovies) => {
 
 
     for (let i = 0; i < movies?.length; i++) {
-        let favorites = movies[i].filter(movie => favoriteList.includes(movie.id));
+        let favorites = movies[i].filter(movie => favoriteList?.includes(movie.id));
         if (favorites) {
             for (let j = 0; j < favorites.length; j++) {
                 if (arr.length !== 0) {

@@ -86,7 +86,7 @@ function Movie({ movie, isSmall, handleClick, favorite }) {
 
   return (
     <div className='movie'>
-      <img onClick={favorite === undefined ? () => {
+      <img loading='lazy' onClick={favorite === undefined ? () => {
         handleClick(movie.id, isSmall)
       } : null} className={isSmall ? 'smallposter' : 'poster'} src={baseimageUrl + movie.backdrop_path} alt={movie.name} />
       {favorite === undefined ? iconClicked ?

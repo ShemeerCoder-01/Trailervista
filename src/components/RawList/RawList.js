@@ -2,9 +2,9 @@ import React, {  useEffect, useState } from 'react';
 import Axios from '../../Axios/Axios';
 import './RawList.css';
 import YouTube from 'react-youtube';
-import LoaderComponent from '../Common/Loader';
 import Movie from '../Movie';
 import { keyGenerator } from '../../actions/KeyGenerator';
+import SkeletonScreen from '../SkeletonView';
 
 
 
@@ -13,6 +13,9 @@ function RawList(props) {
   let [videoKey,SetVideoKey] = useState();
   let [clicked,setClicked] = useState(false);
   let [currMovieId,setCurrentMovieId] = useState();
+  let arr = new Array(20).fill(0);
+
+
 
   
   useEffect(() => {
@@ -60,27 +63,30 @@ function RawList(props) {
   };
 
 
-  if(!movies){
-    return <LoaderComponent/>
-  }
 
   return (
-    <div key={keyGenerator()}  className='row'>
+    <div className='posters-container'>
       <h1>{props.title}</h1>
-      <div className='posters'>
-        {movies && movies.map((movie, index) =>
-          <Movie
-           key={keyGenerator()}
-           movie={movie} 
-           isSmall={props.isSmall}
-           handleClick={handleClick}/>
-        )}
+      <div key={keyGenerator()}  className='row'>
+        <div className='posters'>
+        {movies?
+          movies.map((movie, index) => (
+            <Movie
+              key={keyGenerator()}
+              movie={movie}
+              isSmall={props.isSmall}
+              handleClick={handleClick}
+            />
+          )):
+          arr.map(()=>(<SkeletonScreen/>))
+        }
+       
+        </div>
+        { videoKey?clicked? <YouTube videoId={videoKey} opts={opts} />:'':''}
+
 
       </div>
-      { videoKey?clicked? <YouTube videoId={videoKey} opts={opts} />:'':''}
-
-
-    </div>
+  </div>
   )
 }
 
