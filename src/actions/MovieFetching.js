@@ -1,5 +1,5 @@
 import Axios from "../Axios/Axios";
-import { collection,doc, getDoc } from "firebase/firestore";
+import { collection,doc, getDoc,getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
 
 export const MovieFetching = async(genre,states)=>{
@@ -30,6 +30,28 @@ export const MovieFetching = async(genre,states)=>{
                 favoriteList = favoriteList.filter(movie=> movie.userEmail === currentUser).map(movie=> movie.id);
                 localStorage.setItem('favorites',JSON.stringify(favoriteList));
             }
+        }
+        else{
+            const dbRef = collection(db,'favorites');
+            const queryRef = query(dbRef, orderBy('Favoritelist','desc'));
+            const response = await getDocs(queryRef);
+            const document = response.docs.map((doc,index) => {
+                if(index === 0){
+                    let res = doc.data();
+                let obj = {
+                    id:doc.id,
+                    data:res.Favoritelist,
+                }
+                return obj;
+                }
+                return null;
+            }).filter((item)=>item !== null);
+            
+            localStorage.setItem('docId',document[0].id);
+            let favoriteList = document[0].data.map(obj=>obj.id);
+            localStorage.setItem('favorites',JSON.stringify(favoriteList));
+        
+
         }
     }
     catch(e){

@@ -80,7 +80,7 @@ function RawList(props) {
               handleClick={handleClick}
             />
           )):
-          arr.map(()=>(<SkeletonScreen/>))
+          arr.map(()=>(<SkeletonScreen key={keyGenerator()}/>))
         }
        
         </div>
