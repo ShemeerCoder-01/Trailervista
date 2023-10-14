@@ -31,21 +31,7 @@ function UserPage() {
 
     useEffect(()=>{
        getFavoriteMovies(setMovies);
-    //    const userFavorites = async()=>{
-        // try{
-        //         const favorites =  collection(db,'favorites');
-        //         const data = await getDocs(favorites);
-        //         if(!data.empty){
-        //             const latest = data.docs[0];
-        //             const favorites = latest.data();
-        //             console.log("Favorites are", favorites['Favoritelist']);
-        //         }
-        //     }
-        //     catch(e){
-        //         console.log("error is",e);
-        //     }
-        // }
-       
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
