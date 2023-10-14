@@ -35,7 +35,8 @@ export const MovieFetching = async(genre,states)=>{
             const dbRef = collection(db,'favorites');
             const queryRef = query(dbRef, orderBy('Favoritelist','desc'));
             const response = await getDocs(queryRef);
-            const document = response.docs.map((doc,index) => {
+            const document = response.docs.filter((doc,index) => {
+
                 if(index === 0){
                     let res = doc.data();
                 let obj = {
@@ -45,10 +46,10 @@ export const MovieFetching = async(genre,states)=>{
                 return obj;
                 }
                 return null;
-            }).filter((item)=>item !== null);
+            });
             
             localStorage.setItem('docId',document[0].id);
-            let favoriteList = document[0].data.map(obj=>obj.id);
+            let favoriteList = document[0].data.filter(obj=>obj.userEmail === currentUser).map(item=>item.id);
             localStorage.setItem('favorites',JSON.stringify(favoriteList));
         
 

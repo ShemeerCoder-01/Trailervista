@@ -15,11 +15,11 @@ function Movie({ movie, isSmall, handleClick, favorite }) {
     if (favoritesData?.includes(movie.id)) {
       setIconClicked(true);
     }
-  }, [movie.id]);
+  }, [movie]);
 
-  if (movie.backdrop_path === null) {
-    return;
-  }
+  // if (movie.backdrop_path === null) {
+  //   return;
+  // }
 
   const handleIconClick = async (id) => {
     let userEmail = localStorage.getItem('user');
