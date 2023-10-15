@@ -1,7 +1,6 @@
 .navBar{
     position: fixed;
     background-color: rgba(51, 51, 51,0.1);
-    /* background-color: #CA3433; */
     top: 0;
     width: 100%;
     height: 60px;
@@ -37,9 +36,17 @@
 }
 
 @media screen and (max-width:760px) {
+    .navBar{
+        height: 40px;
+        padding: 0.65rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 15;
+    }
     .navBar .logo{
-        width: 4rem;
-        padding-left: 1rem;
+        width: 6rem;
+        padding: 1rem;
     }
     
     .navBar .avatar{
@@ -50,9 +57,12 @@
 }
 
 @media screen and (max-width:480px) {
+    .navBar{
+        height: 45px;
+    }
     .navBar .logo{
-        width: 2.8rem;
-        padding-left: 1rem;
+        width: 5rem;
+        height: 37px;
     }
     
     .navBar .avatar{

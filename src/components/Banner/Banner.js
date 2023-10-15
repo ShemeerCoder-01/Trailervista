@@ -17,25 +17,22 @@ function Banner() {
             let idx = Math.floor(Math.random() * response.data.results.length)
             setMovieUrl(response.data.results[idx].backdrop_path);
             setMovie(response.data.results[idx]);
-        }).catch(err=> console.log(err));
+        }).catch(err => console.log(err));
 
     }, [])
 
-    let obj = { backgroundImage: (`url(${baseimageUrl + movieUrl})`),backgroundSize:"100% 100%" }
+    let obj = { backgroundImage: (`url(${baseimageUrl + movieUrl})`), backgroundSize: "100% 100%" }
 
     return (
         <div style={obj} className='banner'>
-            <div className='content' >
-                <div className='subContent'>
-                    {movie && <h1 className='title'>{movie.name}</h1>}
-                    <div className='banner_buttons' >
-                        <button className='button' >Play</button>
-                        <button className='button' onClick={()=> navigate('/profile')} >My list</button>
-                    </div>
+            {movie && <div className='content' >
+                <h1 className='title'>{movie.name}</h1>
+                <div className='banner_buttons' >
+                    <button className='button' >Play</button>
+                    <button className='button' onClick={() => navigate('/profile')} >My list</button>
                 </div>
-            
-                {movie && <h1 className='description'>{movie.overview}</h1>}
-            </div>
+                <h1 className='description'>{movie.overview}</h1>
+            </div>}
         </div>
     )
 }

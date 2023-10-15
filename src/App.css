@@ -107,11 +107,21 @@ input::placeholder{
   padding-right: 5rem;
 }
 
+.userPage{
+  width: 100%;
+}
+
 .welcomeMsg{
   margin: 5rem 0;
   width: fit-content;
   padding: 1rem 1.5rem;
 }
+
+.fav{
+  margin-bottom:2rem;
+  text-align: center !important;
+}
+
 
 .favoriteList{
   display: flex;
@@ -127,4 +137,38 @@ input::placeholder{
   margin: 1.25rem 1.5rem;
 }
 
+.lang{
+  color:rgba(255,255,255,0.38);
+}
 
+
+
+@media screen and (max-width:760px) {
+  .userPage{
+    width: 85%;
+  }
+
+  .welcomeMsg{
+    margin: 4rem 0;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.2rem;
+  }
+
+  .fav{
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center !important;
+  }
+
+  .favoriteMovie{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .original-name{
+    font-size: 1rem;
+  }
+  
+}

@@ -15,7 +15,7 @@ function UserPage() {
 
     
 
-    console.log(movies);
+
 
     useEffect(()=>{
         const userStatus = isSignedIn();
@@ -38,10 +38,10 @@ function UserPage() {
     
 
   return (
-    <div>
+    <div className='userPage'>
         <NavBar/>
         <h1 className='welcomeMsg'>Hi..{user}</h1>
-        <h1 style={{marginBottom:"2rem"}}>Favorites</h1>
+        <h1 className='fav'>Favorites</h1>
         <div className='favoriteList'>
             {movies && movies.map((movie, index) =>
             <div className='favoriteMovie' key={keyGenerator()}>
@@ -51,8 +51,8 @@ function UserPage() {
                  isSmall={true}
                  favorite={true}/>
                 <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
-                    <h2>{movie.name || movie.original_title}</h2>
-                    <p style={{color:"rgba(255,255,255,0.38)"}}>{movie.original_language ==="en"?"English":movie.original_language==="KR"?"Korean":movie.original_language}</p>
+                    <h2 className='original-name'>{movie.name || movie.original_title}</h2>
+                    <p className='lang'>{movie.original_language ==="en"?"English":movie.original_language==="KR"?"Korean":movie.original_language}</p>
                 </div>
                 
                 <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
