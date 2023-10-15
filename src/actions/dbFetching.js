@@ -5,8 +5,9 @@ export const dbFetching = async()=>{
     try{
         const docId = localStorage.getItem('docId');
         const currentUser = localStorage.getItem('user');
-        const favoritesCollection = collection(db,'favorites');
+        
         if(docId){
+            const favoritesCollection = collection(db,'favorites');
             const docRef = doc(favoritesCollection, docId);
             const favorites = await getDoc(docRef);
             if(favorites.exists()){
