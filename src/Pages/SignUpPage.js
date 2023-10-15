@@ -6,6 +6,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { isSignedIn } from '../actions/signInChecker';
+import { dbFetching } from '../actions/dbFetching';
 
 
 function SignUpPage() {
@@ -30,6 +31,7 @@ function SignUpPage() {
         try {
             const response = await signInWithPopup(auth, provider);
             localStorage.setItem('user', response.user.email);
+            dbFetching();
             navigate('/Home');
         } catch (error) {
             navigate('/');
