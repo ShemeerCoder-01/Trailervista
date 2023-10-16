@@ -17,6 +17,16 @@
     padding-left: 1rem;
 }
 
+.nav-icons{
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.search{
+    font-size: 2rem;
+}
+
 .navBar .avatar{
     width: 2rem;
     padding-right: 1.5rem;

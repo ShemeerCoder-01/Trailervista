@@ -1,0 +1,19 @@
+.searchBar{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #212121;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 0.65rem;
+}
+
+.searchBar .inputArea{
+    border: none;
+    outline: none;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    color: #fff;
+}
