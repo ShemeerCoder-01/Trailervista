@@ -118,8 +118,10 @@ input::placeholder{
 }
 
 .fav{
-  margin-bottom:2rem;
-  text-align: center !important;
+  margin: 2rem 0;
+  /* margin-left: 2rem; */
+  text-align: center;
+  
 }
 
 
@@ -133,8 +135,14 @@ input::placeholder{
   display: flex;
   width: 90%;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 1.2rem;
   margin: 1.25rem 1.5rem;
+}
+
+.movieDetails{
+  display:flex;
+  flex-direction:column;
+  gap:0.25rem;
 }
 
 .lang{
@@ -145,8 +153,12 @@ input::placeholder{
 
 @media screen and (max-width:760px) {
   .userPage{
-    width: 85%;
+    width: max-content;
   }
+
+  /* .favoriteList{
+    width: 100%;
+  } */
 
   .welcomeMsg{
     margin: 4rem 0;
@@ -157,14 +169,28 @@ input::placeholder{
   .fav{
     width: 100%;
     font-size: 1.2rem;
-    text-align: center !important;
+    margin-left: 1.5rem;
+    text-align: left !important;
+  }
+  .fav::after{
+    content: ' : ';
+    color: #fff;
   }
 
   .favoriteMovie{
     display: flex;
-    width: 100%;
-    align-items: center;
+    width: 21rem;
+    padding: 0;
     justify-content: space-between;
+  }
+
+
+  .staricon{
+    font-size: 1rem !important;
+  }
+
+  .rating,.original-name,.lang{
+    font-size: 0.6rem !important;
   }
 
   .original-name{

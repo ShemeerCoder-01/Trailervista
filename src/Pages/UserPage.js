@@ -50,14 +50,14 @@ function UserPage() {
                  movie={movie} 
                  isSmall={true}
                  favorite={true}/>
-                <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
+                <div className='movieDetails'>
                     <h2 className='original-name'>{movie.name || movie.original_title}</h2>
-                    <p className='lang'>{movie.original_language ==="en"?"English":movie.original_language==="KR"?"Korean":movie.original_language}</p>
+                    <p className='lang'>{movie.original_language ==="en"?"English":movie.original_language==="KR"?"Korean":movie.original_language==="es"?"Spanish":movie.original_language}</p>
                 </div>
                 
-                <div style={{display:"flex",flexDirection:"column",gap:'0.25rem'}}>
-                    <StarBorderRoundedIcon/>
-                    <p>{Math.round(movie.vote_average * 10 ** 2)/10 ** 2}</p>
+                <div className='movieDetails'>
+                    <StarBorderRoundedIcon className='staricon'/>
+                    <p className='rating'>{Math.round(movie.vote_average * 10 ** 2)/10 ** 2}</p>
                 </div>
             </div>
             )}
